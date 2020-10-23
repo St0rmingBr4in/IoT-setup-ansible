@@ -1,0 +1,12 @@
+---
+- name: Install mosquitto
+  package:
+    name:
+      - mosquitto
+      - mosquitto-clients
+
+- name: Enable and start mqtt broker
+  systemd:
+    name: mosquitto.service
+    state: started
+    enabled: true

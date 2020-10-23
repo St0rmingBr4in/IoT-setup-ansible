@@ -1,0 +1,10 @@
+[Unit]
+Description=Door sensor MQTT publisher
+
+[Service]
+Type=simple
+RemainAfterExit=no
+ExecStart=/usr/local/bin/door-sensor.py
+
+[Install]
+WantedBy=multi-user.target

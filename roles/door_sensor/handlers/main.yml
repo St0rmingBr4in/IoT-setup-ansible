@@ -1,0 +1,5 @@
+---
+- name: Restart door-sensor service
+  systemd:
+    name: door-sensor
+    state: restarted

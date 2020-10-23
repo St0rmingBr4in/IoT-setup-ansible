@@ -1,0 +1,32 @@
+---
+
+- name: Install python3
+  package:
+    name:
+      - python3-rpi.gpio
+      - python3-paho-mqtt
+
+- name: Copy the door-sensor.py app
+  copy:
+    src: door-sensor.py
+    dest: /usr/local/bin/door-sensor.py
+    mode: 'u=rwx,g=rx,o=rx'
+  notify: Restart door-sensor service
+
+- name: Create /usr/local/lib/systemd/system dir
+  file:
+    state: directory
+    path: /usr/local/lib/systemd/system
+
+- name: Create the door-sensor service file
+  copy:
+    dest: /usr/local/lib/systemd/system/door-sensor.service
+    src: door-sensor.service
+    mode: 'u=rw,g=r,o=r'
+
+- name: Enable and start the door-sensor service
+  systemd:
+    name: door-sensor.service
+    enabled: true
+    state: started
+    daemon_reload: true

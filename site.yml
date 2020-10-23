@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+
+---
+
+- hosts: all
+  roles:
+    - common
+    - ssh
+    - mqtt_broker
+    - door_sensor

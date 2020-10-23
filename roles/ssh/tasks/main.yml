@@ -1,0 +1,25 @@
+---
+- name: Create the /etc/ssh/sshd_config.d dir
+  file:
+    path: /etc/ssh/sshd_config.d
+    state: directory
+
+- name: Configure sshd
+  template:
+    dest: /etc/ssh/sshd_config.d/00-custom.conf
+    src: sshd_config
+  notify:
+    - Restart sshd
+
+- name: Ensure custom config is loaded
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: "Include /etc/ssh/sshd_config.d/*.conf"
+    regexp: "Include /etc/ssh/sshd_config.d/*.conf"
+    insertbefore: BOF
+
+- name: Set ssh authorized_keys
+  authorized_key:
+    key: "{{ ssh_authorized_keys|join('\n') }}"
+    user: "{{ ansible_user }}"
+    exclusive: false
