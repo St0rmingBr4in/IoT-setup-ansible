@@ -1,0 +1,11 @@
+---
+- name: Start octoprint
+  community.general.docker_container:
+    name: octoprint
+    image: octoprint/octoprint
+    state: started
+    devices:
+      - "/dev/ttyACM0"
+    ports:
+      - "80:80"
+    restart_policy: always

@@ -1,0 +1,17 @@
+---
+
+- name: Install docker
+  package:
+    name:
+      - docker.io
+      - python3-pip
+
+- name: Install docker python
+  pip:
+    name: docker
+
+- name: Enable docker
+  systemd:
+    name: docker
+    state: started
+    enabled: true

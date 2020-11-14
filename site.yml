@@ -6,5 +6,13 @@
   roles:
     - common
     - ssh
+
+- hosts: 3d-printer.ilovecara.ml.lan
+  roles:
+    - docker
+    - octoprint
+
+- hosts: raspberrypi-0.ilovecara.ml.lan
+  roles:
     - mqtt_broker
     - door_sensor

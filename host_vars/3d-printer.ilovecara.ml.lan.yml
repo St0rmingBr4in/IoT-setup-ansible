@@ -1,0 +1,8 @@
+---
+octoprint_version: 1.4.2
+octoprint_udev_symlink: 3d-printer
+octoprint_config_serial:
+  port: /dev/3d-printer
+  baudrate: 115200
+  autoconnect: true
+  log: false
