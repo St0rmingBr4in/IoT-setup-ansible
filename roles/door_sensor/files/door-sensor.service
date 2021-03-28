@@ -5,6 +5,8 @@ Description=Door sensor MQTT publisher
 Type=simple
 RemainAfterExit=no
 ExecStart=/usr/local/bin/door-sensor.py
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target

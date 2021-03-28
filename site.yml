@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#!/usr/bin/env -S ansible-playbook --diff
 
 ---
 
@@ -7,10 +7,10 @@
     - common
     - ssh
 
-- hosts: 3d-printer.ilovecara.ml.lan
-  roles:
-    - docker
-    - octoprint
+#- hosts: 3d-printer.ilovecara.ml.lan
+#  roles:
+#    - docker
+#    - octoprint
 
 - hosts: raspberrypi-0.ilovecara.ml.lan
   roles:
